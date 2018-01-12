@@ -12,52 +12,66 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
     @IBOutlet weak var tableView: UITableView!
-
     
     var list = [ToDo]()
 
     
+    
+    //Table set up
     func numberOfSections(in tableView: UITableView) -> Int{
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = list[indexPath.row].title
-        cell.detailTextLabel?.text = list[indexPath.row].notes
-        
-        return cell
-    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showChangeTaskViewController", sender: self)
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
-        tableView.reloadData()
+    
+    
+    //Dynamic cell set up with data
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "CellsLbl") as! CellsLbl
+       // cell.titleLbl.text = list[indexPath.row].title
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = list[indexPath.row].title
+        cell.detailTextLabel?.text = list[indexPath.row].notes
+        cell.backgroundColor = UIColor.darkGray
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
+        return cell
     }
+ 
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //Fetch data and tableView reloading
+    override func viewWillAppear(_ animated: Bool) {
+        //self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.white
+        //self.tableView.reloadData()
         let fetchRequest: NSFetchRequest<ToDo> = ToDo.fetchRequest()
         do{
             let list = try PersistanceService.context.fetch(fetchRequest)
             self.list = list
             self.tableView.reloadData()
         } catch {}
-
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
     
+    
+    //Add new ToDo
     @IBAction func addTaskTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Add ToDo", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
@@ -70,16 +84,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let title = alert.textFields!.first!.text!
             let notes = alert.textFields!.last!.text!
             let task = ToDo(context: PersistanceService.context)
+            if title == "" {} else {
             task.title = title
             task.notes = notes
+            task.isCompleted = false
             PersistanceService.saveContext()
             self.list.append(task)
             self.tableView.reloadData()
-        }
+            }}
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
     
+    
+    
+    //Preparing for segue and getting data of selected cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showChangeTaskViewController" {
             if let indexPath = tableView.indexPathForSelectedRow {

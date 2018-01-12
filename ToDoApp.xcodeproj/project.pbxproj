@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CA096A02007747B00EE6671 /* CellsLbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA0969F2007747B00EE6671 /* CellsLbl.swift */; };
 		2CE5511E2006A2FA002BE3D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5511D2006A2FA002BE3D9 /* AppDelegate.swift */; };
 		2CE551202006A2FA002BE3D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5511F2006A2FA002BE3D9 /* ViewController.swift */; };
 		2CE551232006A2FA002BE3D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE551212006A2FA002BE3D9 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CA0969F2007747B00EE6671 /* CellsLbl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsLbl.swift; sourceTree = "<group>"; };
 		2CE5511A2006A2FA002BE3D9 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CE5511D2006A2FA002BE3D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CE5511F2006A2FA002BE3D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				2CE551352006B75A002BE3D9 /* ToDo+CoreDataProperties.swift */,
 				2CE5511D2006A2FA002BE3D9 /* AppDelegate.swift */,
 				2CE5511F2006A2FA002BE3D9 /* ViewController.swift */,
+				2CA0969F2007747B00EE6671 /* CellsLbl.swift */,
 				2CE551322006B18D002BE3D9 /* PersistanceService.swift */,
 				2CE5513C2006CA3E002BE3D9 /* ChangeTaskViewController.swift */,
 				2CE551212006A2FA002BE3D9 /* Main.storyboard */,
@@ -157,6 +160,7 @@
 				2CE551372006B75A002BE3D9 /* ToDo+CoreDataProperties.swift in Sources */,
 				2CE5513D2006CA3E002BE3D9 /* ChangeTaskViewController.swift in Sources */,
 				2CE551362006B75A002BE3D9 /* ToDo+CoreDataClass.swift in Sources */,
+				2CA096A02007747B00EE6671 /* CellsLbl.swift in Sources */,
 				2CE5511E2006A2FA002BE3D9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -19,5 +19,6 @@ extension ToDo {
 
     @NSManaged public var title: String?
     @NSManaged public var notes: String?
+    @NSManaged var isCompleted: NSNumber?
 
 }
